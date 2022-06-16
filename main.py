@@ -1,4 +1,4 @@
-
+# 123
 import py_compile
 from aiogram import (
     Bot,
