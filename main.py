@@ -1,5 +1,3 @@
-
-import py_compile
 from aiogram import (
     Bot,
     Dispatcher,
@@ -8,17 +6,17 @@ from aiogram import (
 )
 
 import config
-from Quiz import Quis
+from quiz import Quiz
 
 bot = Bot(token=config.TOKEN)
 dp = Dispatcher(bot)
 
-quiz_db = {}  # qwiz iffo
-quiz_owners = {}  # woners info
+quiz_db = {}  # quiz info
+quiz_owners = {}  # quiz owners info
 
 
-@dp.message_handler(Command=['start'])
-async def cmd_startcmd_start(message: types.Message) -> None:
+@dp.message_handler(commands=['start'])
+async def cmd_start(message: types.Message) -> None:
     """Start command handler"""
     poll_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     poll_keyboard.add(types.KeyboardButton(
@@ -63,5 +61,7 @@ async def msg_with_poll(message: types.Message) -> None:
     await message.reply(
         f'Тест сохранен. Общее количество тестов: {len(quiz_db[user_id])}'
     )
+
+
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)

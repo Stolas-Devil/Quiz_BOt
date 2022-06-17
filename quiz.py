@@ -1,7 +1,7 @@
 from typing import List
 
 
-class Quis:
+class Quiz:
     type: str = 'quiz'
 
     def __init__(self, quiz_id, qeustions, options, corect_opustions_id, owner_id) -> None:
